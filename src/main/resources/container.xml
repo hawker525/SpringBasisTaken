@@ -2,23 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="persoonViewer" class="be.vdab.viewers.PersoonViewer">
-        <constructor-arg>
-            <list>
-                <value>VOORNAAM</value>
-                <value>FAMILIENAAM</value>
-                <value>AANTAL_KINDEREN</value>
-            </list>
-        </constructor-arg>
-        <constructor-arg ref="persoonServiceImpl"/>
-    </bean>
-    <bean id="persoonRepositoryCSV" class="be.vdab.repositories.PersoonRepositoryCSV">
-        <constructor-arg value="H:\\cursussen\\Spring\\theorie\\personen.csv"/>
-    </bean>
-    <bean id="persoonRepositoryMeerdereRegels" class="be.vdab.repositories.PersoonRepositoryMeerdereRegels">
-        <constructor-arg value="H:\\cursussen\\Spring\\theorie\\personen.txt"/>
-    </bean>
-    <bean id="persoonServiceImpl" class="be.vdab.services.PersoonServiceImpl">
-        <constructor-arg ref="persoonRepositoryMeerdereRegels"/>
-    </bean>
+    <import resource="repositories.xml"/>
+    <import resource="services.xml"/>
+    <import resource="viewers.xml"/>
 </beans>
