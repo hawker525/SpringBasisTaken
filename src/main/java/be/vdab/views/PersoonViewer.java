@@ -1,5 +1,6 @@
 package be.vdab.views;
 
+import be.vdab.PersoonEigenschap;
 import be.vdab.entities.Persoon;
 
 import java.util.List;
@@ -10,23 +11,36 @@ import java.util.List;
  */
 public final class PersoonViewer {
 
-    private final boolean aantalKinderenTonen;
+    private final PersoonEigenschap[] eigenschappen;
 
-    public PersoonViewer(boolean aantalKinderenTonen) {
-        this.aantalKinderenTonen = aantalKinderenTonen;
+    public PersoonViewer(PersoonEigenschap[] eigenschappen) {
+       this.eigenschappen = eigenschappen;
     }
 
     public void afbeelden(List<Persoon> personen) {
         for (Persoon p : personen) {
-            if(aantalKinderenTonen){
-                System.out.printf("persoonNr: %d, voornaam: %s, familienaam: %s, aantalKinderen: %d\n", p.getPersoonNr(), p.getVoornaam(), p.getFamilienaam(), p.getAantalKinderen());
-            } else {
-                System.out.printf("persoonNr: %d, voornaam: %s, familienaam: %s\n", p.getPersoonNr(), p.getVoornaam(), p.getFamilienaam());
+            for (PersoonEigenschap e : eigenschappen) {
+                System.out.printf(e.name() + ": ");
+                toonEigenschap(p,e);
             }
         }
     }
 
-//    public void setAantalKinderenTonen(boolean aantalKinderenTonen) {
-//        this.aantalKinderenTonen = aantalKinderenTonen;
-//    }
+    private void toonEigenschap(Persoon persoon, PersoonEigenschap eigenschap) {
+        switch (eigenschap) {
+            case PERSOON_NR:
+                System.out.println(persoon.getPersoonNr());
+                break;
+            case VOORNAAM:
+                System.out.println(persoon.getVoornaam());
+                break;
+            case AANTAL_KINDEREN:
+                System.out.println(persoon.getAantalKinderen());
+                break;
+            case FAMILIENAAM:
+                System.out.println(persoon.getFamilienaam());
+                break;
+        }
+    }
+
 }
