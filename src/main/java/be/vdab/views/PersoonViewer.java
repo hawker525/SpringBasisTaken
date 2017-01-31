@@ -10,7 +10,11 @@ import java.util.List;
  */
 public final class PersoonViewer {
 
-    private boolean aantalKinderenTonen;
+    private final boolean aantalKinderenTonen;
+
+    public PersoonViewer(boolean aantalKinderenTonen) {
+        this.aantalKinderenTonen = aantalKinderenTonen;
+    }
 
     public void afbeelden(List<Persoon> personen) {
         for (Persoon p : personen) {
@@ -22,7 +26,7 @@ public final class PersoonViewer {
         }
     }
 
-    public void setAantalKinderenTonen(boolean aantalKinderenTonen) {
-        this.aantalKinderenTonen = aantalKinderenTonen;
-    }
+//    public void setAantalKinderenTonen(boolean aantalKinderenTonen) {
+//        this.aantalKinderenTonen = aantalKinderenTonen;
+//    }
 }
