@@ -15,8 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("container.xml")){
-            PersoonService service = context.getBean("persoonServiceImpl", PersoonService.class);
-            System.out.println(service.findAll());
+            context.getBean("persoonViewer", PersoonViewer.class).afbeelden();
         }
     }
 }

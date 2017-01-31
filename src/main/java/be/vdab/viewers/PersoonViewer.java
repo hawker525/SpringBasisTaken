@@ -20,12 +20,13 @@ public final class PersoonViewer {
        this.persoonService = persoonService;
     }
 
-    public void afbeelden(List<Persoon> personen) {
-        for (Persoon p : personen) {
-            for (PersoonEigenschap e : eigenschappen) {
-                System.out.printf(e.name() + ": ");
-                toonEigenschap(p,e);
+    public void afbeelden() {
+        for (Persoon persoon : persoonService.findAll()) {
+            for (PersoonEigenschap eigenschap : eigenschappen) {
+                toonEigenschap(persoon, eigenschap);
+                System.out.print(' ');
             }
+            System.out.println();
         }
     }
 

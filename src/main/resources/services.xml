@@ -6,6 +6,6 @@
 
     <import resource="repositories.xml"/>
     <bean id="persoonServiceImpl" class="be.vdab.services.PersoonServiceImpl">
-        <constructor-arg ref="persoonRepositoryMeerdereRegels"/>
+        <constructor-arg ref="persoonRepositoryCSV"/>
     </bean>
 </beans>
