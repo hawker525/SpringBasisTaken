@@ -1,7 +1,8 @@
-package be.vdab.views;
+package be.vdab.viewers;
 
 import be.vdab.PersoonEigenschap;
 import be.vdab.entities.Persoon;
+import be.vdab.services.PersoonService;
 
 import java.util.List;
 
@@ -11,10 +12,12 @@ import java.util.List;
  */
 public final class PersoonViewer {
 
+    private final PersoonService persoonService;
     private final PersoonEigenschap[] eigenschappen;
 
-    public PersoonViewer(PersoonEigenschap[] eigenschappen) {
+    public PersoonViewer(PersoonEigenschap[] eigenschappen, PersoonService persoonService) {
        this.eigenschappen = eigenschappen;
+       this.persoonService = persoonService;
     }
 
     public void afbeelden(List<Persoon> personen) {

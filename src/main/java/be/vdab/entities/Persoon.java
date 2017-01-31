@@ -32,5 +32,37 @@ public class Persoon {
     public int getAantalKinderen() {
         return aantalKinderen;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Persoon persoon = (Persoon) o;
+
+        if (getPersoonNr() != persoon.getPersoonNr()) return false;
+        if (getAantalKinderen() != persoon.getAantalKinderen()) return false;
+        if (!getVoornaam().equals(persoon.getVoornaam())) return false;
+        return getFamilienaam().equals(persoon.getFamilienaam());
+    }
+
+    @Override
+    public String toString() {
+        return "Persoon{" +
+                "persoonNr=" + persoonNr +
+                ", voornaam='" + voornaam + '\'' +
+                ", familienaam='" + familienaam + '\'' +
+                ", aantalKinderen=" + aantalKinderen +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getPersoonNr();
+        result = 31 * result + getVoornaam().hashCode();
+        result = 31 * result + getFamilienaam().hashCode();
+        result = 31 * result + getAantalKinderen();
+        return result;
+    }
 }
 

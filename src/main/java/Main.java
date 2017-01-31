@@ -1,5 +1,7 @@
 import be.vdab.entities.Persoon;
-import be.vdab.views.PersoonViewer;
+import be.vdab.services.PersoonService;
+import be.vdab.services.PersoonServiceImpl;
+import be.vdab.viewers.PersoonViewer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
@@ -13,13 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
         try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("container.xml")){
-            Persoon a = new Persoon(0, "maarten", "westelinck", 1);
-            Persoon b = new Persoon(1, "test", "tester", 2);
-            List<Persoon> personen = new ArrayList<>();
-            personen.add(a);
-            personen.add(b);
-            PersoonViewer persoonViewer = context.getBean("persoonViewer", PersoonViewer.class);
-            persoonViewer.afbeelden(personen);
+            PersoonService service = context.getBean("persoonServiceImpl", PersoonService.class);
+            System.out.println(service.findAll());
         }
     }
 }
