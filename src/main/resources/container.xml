@@ -2,7 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <import resource="repositories.xml"/>
-    <import resource="services.xml"/>
-    <import resource="viewers.xml"/>
+
+    <bean id="persoonViewer" class="be.vdab.viewers.PersoonViewer">
+        <constructor-arg>
+            <list>
+                <value>PERSOON_NR</value>
+                <value>VOORNAAM</value>
+                <value>FAMILIENAAM</value>
+                <value>AANTAL_KINDEREN</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+               <bean class="be.vdab.services.PersoonServiceImpl">
+
+                   <constructor-arg "/>
+               </bean>
+        </constructor-arg>
+    </bean>
 </beans>
